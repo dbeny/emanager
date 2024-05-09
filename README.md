@@ -26,3 +26,4 @@ Alkalmazott kitörlés: admin más admint nem törölhet ki, illetve saját mag�
 
 #Fejlesztoi dokumentacio
 ez meg itt de amúgy kódba lesz
+teszt
