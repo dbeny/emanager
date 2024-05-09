@@ -39,6 +39,8 @@ namespace Aprojekt {
 
         public void HandlePage() {
             ClearConsole();
+            Console.WriteLine("----- EMPLOYEE MANAGER -----");
+            Console.WriteLine();
             if (currentMenu.IsFunctional()) {
                 bool returned = currentMenu.InvokeFunction();
                 if (returned) {

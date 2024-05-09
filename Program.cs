@@ -3,16 +3,14 @@ using System.Collections.Generic;
 
 namespace Aprojekt {
     internal class Program {
-        // https://media.discordapp.net/attachments/899955220468097065/1228283713021018172/rn_image_picker_lib_temp_2bf3f291-c801-48c3-84e3-06bb10001db3.jpg?ex=662b7b59&is=66190659&hm=66c89dc5b07c50b214b8ced650e0c75b38057abe667f8c220c025110530f7e48&=&format=webp&width=910&height=683
-        //opciók után ott van az opció ID-je ha be van kapcsolva
-        public static bool debug = false;
+        public static bool debug = false; // mutassa-e a menük id-jét
         private static List<Employee> employees;
 
         static void Main(string[] args) {
             string employeeFilepath = "data/employee.data";
             employees = Employee.LoadFromFile(employeeFilepath);
             string adminFilepath = "data/admin.data";
-            List<Admin> admins = Utils.LoadAdminsFromFile(adminFilepath);
+            List<Admin> admins = Admin.LoadFromFile(adminFilepath);
             
             bool login = false;
             Employee e = null;
@@ -116,9 +114,26 @@ namespace Aprojekt {
             handler.AddMenu(employeeCreateMenu);
 
             Menu employeeRemoveMenu = new Menu("employee_remove", () => {
-                // todo
-                Utils.ShowEmployee(new Employee(99, "asd", "asd", "asd", "asd", true));
-                Console.ReadKey();
+                foreach (Employee em in employees) {
+                    if (em.GetId() == e.GetId() || em.IsAdmin()) continue;
+                    Console.WriteLine("#{0} {1}", em.GetId(), em.GetName());
+                }
+                Utils.Spacer(25);
+                Console.WriteLine("Navigációban a -1 szám a visszalépés!");
+                Utils.Spacer(25);
+                ask_start:
+                Console.Write("Navigáció (-1 vagy azonosító): ");
+                int selectedId = int.Parse(Console.ReadLine());
+                if (selectedId != -1) {
+                    Employee emp = Employee.GetById(employees, selectedId);
+                    if (emp == null || emp.GetId() == e.GetId() || emp.IsAdmin()) {
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Utils.ClearLine();
+                        goto ask_start;
+                    }
+                    employees.Remove(emp);
+                    Utils.SaveEmployeesToFile(employeeFilepath, employees);
+                }
                 return true;
             }).SetParent(adminMenu);
             handler.AddMenu(employeeRemoveMenu);
@@ -153,11 +168,7 @@ namespace Aprojekt {
                     handler.HandlePage();
                 }
             }
-
-            // - dolgozó kirúgás
-            // program személyre szabás (random cég) - üres verzió + random verzió
             // kód dokumentáció (MIELOTT ELKEZDENEM ki kell torolni mindent ami nem az + /**/ -t hasznalni
-            // github readme (+kód +használati dokumentáció)
         }
     }
 }

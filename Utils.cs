@@ -51,21 +51,6 @@ namespace Aprojekt {
             Console.WriteLine();
         }
 
-        public static List<Admin> LoadAdminsFromFile(string filename) {
-            List<Admin> admins = new();
-            StreamReader sr = new(filename);
-            while (!sr.EndOfStream) {
-                string line = sr.ReadLine();
-                if (line.StartsWith("#")) continue;
-                string[] lineSplit = line.Split(";", 2);
-                if (lineSplit.Length != 2) continue;
-                Admin admin = new(int.Parse(lineSplit[0]), lineSplit[1]);
-                admins.Add(admin);
-            }
-            sr.Close();
-            return admins;
-        }
-
         // todo: SaveAdminsToFile
         public static void SaveAdminsToFile(string path, List<Admin> admins) {
             StreamWriter sw = new(path);
