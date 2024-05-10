@@ -27,3 +27,5 @@ admin.data példa:
 # Fejlesztői dokumentáció
 A kódban megtalálható minden `.cs` fájlnak és az azon belüli függvényeknek a pontos leírása.
 
+# Megjegyzés
+A másik fiók ami kódot rakott fel szintén én vagyok, rossz emailről raktam fel a kódot.
