@@ -4,6 +4,7 @@ using System.IO;
 
 namespace Aprojekt {
     internal class Utils {
+        // alkalmazott lekérése név és születési alapján (az elsőt adja vissza)
         public static Employee GetEmployee(List<Employee> employees, string name, string dateOfBirth) {
             foreach (Employee e in employees) {
                 if (e.GetName().Equals(name) && e.GetDateOfBirth().Equals(dateOfBirth)) {
@@ -13,7 +14,7 @@ namespace Aprojekt {
             return null;
         }
 
-        // soronként kilistázza a dolgozókat
+        // soronként kilistázza a dolgozókat a fájl adatstruktúrája szerint
         public static void ShowEmployeesCode(List<Employee> employees, bool spacer) {
             foreach (Employee e in employees) {
                 Console.WriteLine(
@@ -28,6 +29,7 @@ namespace Aprojekt {
             }
         }
 
+        //soronként kilistázza a dolgozókat
         public static void ShowEmployees(List<Employee> employees) {
             foreach (Employee e in employees) {
                 ShowEmployee(e);
@@ -35,7 +37,7 @@ namespace Aprojekt {
             }
         }
 
-        // kilistáz egy adott dolgozót
+        // kiír egy adott dolgozót
         public static void ShowEmployee(Employee e) {
             Console.WriteLine("Azonosító: " + e.GetId());
             Console.WriteLine("Név: " + e.GetName());
@@ -45,13 +47,13 @@ namespace Aprojekt {
             Console.WriteLine("Admin: " + e.IsAdminString());
         }
 
-        // elválasztó vonal a konzolba
+        // elválasztó vonal a konzolba egy megadott mérettel
         public static void Spacer(int size) {
             Console.Write(new string('-', size));
             Console.WriteLine();
         }
 
-        // todo: SaveAdminsToFile
+        // admin belépések kimentése fájlba
         public static void SaveAdminsToFile(string path, List<Admin> admins) {
             StreamWriter sw = new(path);
             foreach (Admin admin in admins) {
@@ -61,6 +63,7 @@ namespace Aprojekt {
             sw.Close();
         }
 
+        //admin lekérése egy megadott listából azonosító alapján
         public static Admin GetAdmin(List<Admin> admins, int id) {
             foreach (Admin a in admins) {
                 if (a.GetId() == id) return a;
@@ -68,6 +71,7 @@ namespace Aprojekt {
             return null;
         }
 
+        //alkalmazottak lementése egy megadott fájlba
         public static void SaveEmployeesToFile(string path, List<Employee> employees) {
             StreamWriter sw = new(path);
             foreach (Employee e in employees) {
@@ -84,6 +88,7 @@ namespace Aprojekt {
             sw.Close();
         }
 
+        //utolsó konzol sor kitörlése
         public static void ClearLine() {
             int currentLine = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
