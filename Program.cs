@@ -196,7 +196,6 @@ namespace Aprojekt {
                     handler.HandlePage();
                 }
             }
-            // kód dokumentáció (MIELOTT ELKEZDENEM ki kell torolni mindent ami nem az + /**/ -t hasznalni
         }
     }
 }
