@@ -25,5 +25,5 @@ admin.data példa:
 
 
 # Fejlesztői dokumentáció
-A kódban megtalálható minden `.cs` fájlnak a pontos leírása.
+A kódban megtalálható minden `.cs` fájlnak és az azon belüli függvényeknek a pontos leírása.
 
