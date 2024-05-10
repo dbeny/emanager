@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Aprojekt {
+    /*
+    Egyéb függvények
+    */
     internal class Utils {
         // alkalmazott lekérése név és születési alapján (az elsőt adja vissza)
         public static Employee GetEmployee(List<Employee> employees, string name, string dateOfBirth) {
