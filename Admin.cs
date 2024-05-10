@@ -2,6 +2,9 @@
 using System.IO;
 
 namespace Aprojekt {
+    /*
+    Admin adatok osztálya (alkalmazott id. és jelszó)
+    */
     class Admin {
         private int id;
         private string password;
@@ -11,6 +14,7 @@ namespace Aprojekt {
             this.password = password;
         }
 
+        //egy megadott fájlból egy listába betölti az adminok adatait
         public static List<Admin> LoadFromFile(string filename) {
             List<Admin> admins = new();
             StreamReader sr = new(filename);
@@ -26,6 +30,7 @@ namespace Aprojekt {
             return admins;
         }
 
+        //egy megadott jelszóhoz egyezteti az admin jelszavát
         public bool Authenticate(string password) {
             return (password == this.password);
         }
