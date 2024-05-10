@@ -5,7 +5,7 @@
     - [Fejlesztői dokumentáció](#fejlesztoi-dokumentacio) <- majd ki kéne venni a detailsbol
 </details>
     
-#Hasznalati Utmutato
+# Hasznalati Utmutato
 A használata a programnak egyszerű. A navigációnál meg lehet adni egy számot, és azt a lépést
 futtatja le a program. 
 Alkalmazott kitörlés: admin más admint nem törölhet ki, illetve saját magát sem.
@@ -24,6 +24,6 @@ Alkalmazott kitörlés: admin más admint nem törölhet ki, illetve saját mag�
     3;password123
 </details>
 
-#Fejlesztoi dokumentacio
+# Fejlesztoi dokumentacio
 ez meg itt de amúgy kódba lesz
 teszt
