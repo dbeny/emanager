@@ -2,25 +2,37 @@
 using System.Collections.Generic;
 
 namespace Aprojekt {
+    /*
+    a program fő osztálya, itt található a Main funkció ami az egész programot kezeli
+    */
     internal class Program {
         public static bool debug = false; // mutassa-e a menük id-jét
-        private static List<Employee> employees;
+        private static List<Employee> employees; // beolvasott alkalmazottak listája
 
         static void Main(string[] args) {
+            //alkalmazottak beolvasása
             string employeeFilepath = "data/employee.data";
             employees = Employee.LoadFromFile(employeeFilepath);
+            //adminok beolvasása
             string adminFilepath = "data/admin.data";
             List<Admin> admins = Admin.LoadFromFile(adminFilepath);
-            
+
+            //bejelentkezve van-e a felhasználó
             bool login = false;
+            //felhasználó alkalmazotti profilja
             Employee e = null;
 
+            //menü kezelő (lásd: MenuHandler)
             MenuHandler handler = new();
 
-            //globális cuccos
+            //globális opció: visszamegy a szülőmenübe
             MenuOption backOption = new MenuOption("back", "Visszalépés")
                 .SetMenuHandler(handler);
 
+            /*
+            Ezalatt a menük és az opcióik találhatóak
+            */
+            
             //főmenü
             MenuOption personalOption = new MenuOption("personal", "Adataim")
                 .SetMenuHandler(handler);
@@ -66,6 +78,7 @@ namespace Aprojekt {
             Menu employeeCreateMenu = new Menu("employee_create", () => {
                 ec_start:
                 int id = employees.Count;
+                //adatok bekérése
                 Console.Write("Név: ");
                 string name = Console.ReadLine();
                 Console.Write("Születési év (ÉÉÉÉ/HH/NN): ");
@@ -82,26 +95,30 @@ namespace Aprojekt {
                     Console.Write("Admin jelszó (min. 6 karakter): ");
                     adminPass = Console.ReadLine();
                     if (adminPass.Length < 6) {
+                        //előző sor (beírt jelszó) kitörlése és újrakezdés
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
                         Utils.ClearLine();
                         goto adminPw;
                     }
                 }
+                //új alkalmazott
                 Employee e = new(id, name, dateOfBirth, phoneNumber, position, admin);
                 MenuHandler.ClearConsole();
                 Utils.ShowEmployee(e);
-                // menüopciók??
                 Console.Write("Megfelelőek az adatok (i/n): ");
                 string approved = Console.ReadLine();
                 if (approved.Equals("i")) {
                     employees.Add(e);
+                    //alkalmazotti adatok kimentése
                     Utils.SaveEmployeesToFile(employeeFilepath, employees);
                     if (admin) {
+                        //admin adatok elkészítése, kimentése
                         Admin a = new(id, adminPass);
                         admins.Add(a);
                         Utils.SaveAdminsToFile(adminFilepath, admins);
                     }
                 } else {
+                    //újrakezdés vagy visszamenés
                     Console.Write("Újrakezdés (i/n): ");
                     string restart = Console.ReadLine();
                     if (restart.Equals("i")) {
@@ -113,7 +130,9 @@ namespace Aprojekt {
             }).SetParent(adminMenu);
             handler.AddMenu(employeeCreateMenu);
 
+            //dolgozó eltávolítása oldal
             Menu employeeRemoveMenu = new Menu("employee_remove", () => {
+                //alkalmazottak kilistázása (NEM tartalmazza a felhasználót és NEM tartalmazza az adminokat)
                 foreach (Employee em in employees) {
                     if (em.GetId() == e.GetId() || em.IsAdmin()) continue;
                     Console.WriteLine("#{0} {1}", em.GetId(), em.GetName());
@@ -131,13 +150,22 @@ namespace Aprojekt {
                         Utils.ClearLine();
                         goto ask_start;
                     }
+                    //alkalmazott kitörlése majd mentés
                     employees.Remove(emp);
                     Utils.SaveEmployeesToFile(employeeFilepath, employees);
                 }
                 return true;
             }).SetParent(adminMenu);
             handler.AddMenu(employeeRemoveMenu);
+    
+            /*
+            Vége a menüknek és az opcióknak
+            */
 
+            /*
+            a kezdő bejelentkezés a programba (mindig nézi, hogy be van-e jelentkezve,
+            ha nincs,  akkor bejelentkezik
+            */
             while (true) {
                 if (!login) {
                     e_login: 
