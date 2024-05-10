@@ -25,6 +25,5 @@ admin.data példa:
 
 
 # Fejlesztői dokumentáció
-ez meg itt de amúgy kódba lesz
-teszt
+A kódban megtalálható minden `.cs` fájlnak a pontos leírása.
 
