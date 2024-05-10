@@ -10,6 +10,7 @@ Alkalmazott kitörlés: admin más admint nem törölhet ki, illetve saját mag�
 
 <details>
     <summary>employee.data példa</summary>
+    
     ```
     0;Tuner Jóska;2009/01/09;06209991234;Főcigány;igen
     1;Kókány Péter;2010/04/20;06301353642;Takarító;nem
@@ -20,6 +21,7 @@ Alkalmazott kitörlés: admin más admint nem törölhet ki, illetve saját mag�
 </details>
 <details>
     <summary>admin.data példa</summary>
+    
     ```
     0;jelszo123
     3;password123
