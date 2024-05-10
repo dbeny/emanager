@@ -1,12 +1,12 @@
 ﻿namespace Aprojekt {
+    /*
+    Egy adott MenuOption egy adott Menu osztályhoz kötődik az `id`-vel
+    */
     class MenuOption {
         private readonly string id;
         private string label;
         private MenuHandler handler;
 
-        /*
-        Egy adott MenuOption egy adott Menu osztályhoz kötődik az `id`-vel
-        */
         public MenuOption(string id, string label) {
             this.id = id;
             this.label = label;
