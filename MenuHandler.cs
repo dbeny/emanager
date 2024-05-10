@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 
 namespace Aprojekt {
+    /*
+    A programnak egy darab MenuHandler-je van ami irányítja, hogy a felhasználó mikor, hogy és milyen menüket lát a képernyőn.
+    */
     class MenuHandler {
         private List<Menu> menus;
         private Menu currentMenu;
         private bool admin;
 
-        /*
-        A programnak egy darab MenuHandler-je van ami irányítja, hogy a felhasználó mikor, hogy és milyen menüket lát a képernyőn.
-        */
         public MenuHandler() {
             menus = new List<Menu>();
             admin = false;
