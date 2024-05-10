@@ -4,6 +4,9 @@
         private string label;
         private MenuHandler handler;
 
+        /*
+        Egy adott MenuOption egy adott Menu osztályhoz kötődik az `id`-vel
+        */
         public MenuOption(string id, string label) {
             this.id = id;
             this.label = label;
@@ -18,6 +21,7 @@
             return handler;
         }
 
+        //visszaadja az id-t ha nem kilépés történik
         public string Trigger() {
             switch (id) {
                 case "exit":
