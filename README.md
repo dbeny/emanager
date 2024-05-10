@@ -1,7 +1,7 @@
 # Employee Manager
 ### Tartalom
-- [Használati útmutató](#hasznalati-utmutato)
-- [Fejlesztői dokumentáció](#fejlesztoi-dokumentacio)
+- [Használati útmutató](#használati-útmutató)
+- [Fejlesztői dokumentáció](#fejlesztői-dokumentáció)
     
 # Használati útmutató
 A használata a programnak egyszerű. A navigációnál meg lehet adni egy számot, és azt a lépést
