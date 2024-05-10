@@ -2,6 +2,9 @@
 using System.IO;
 
 namespace Aprojekt {
+    /*
+    Alkalmazott adatai
+    */
     internal class Employee {
         private readonly int id;
         private readonly string name;
@@ -19,6 +22,7 @@ namespace Aprojekt {
             this.admin = admin;
         }
 
+        //alkalmazott lekérése egy listából id alapján
         public static Employee GetById(List<Employee> employees, int id) {
             foreach (Employee emp in employees) {
                 if (emp.GetId() == id) return emp;
@@ -26,6 +30,7 @@ namespace Aprojekt {
             return null;
         }
 
+        //egy megadott helyen levő fájlból alkalmazottak betöltése egy listába
         public static List<Employee> LoadFromFile(string file) {
             List<Employee> employees = new();
             StreamReader sr = new(file);
