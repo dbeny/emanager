@@ -1,9 +1,7 @@
 # Employee Manager
-<details>
-    <summary>Tartalom (még nem működik elvileg)</summary>
-    - [Használati útmutató](#hasznalati-utmutato) <- ezek meglehetősen nem mműködnek 
-    - [Fejlesztői dokumentáció](#fejlesztoi-dokumentacio) <- majd ki kéne venni a detailsbol
-</details>
+### Tartalom
+- [Használati útmutató](#hasznalati-utmutato)
+- [Fejlesztői dokumentáció](#fejlesztoi-dokumentacio)
     
 # Használati útmutató
 A használata a programnak egyszerű. A navigációnál meg lehet adni egy számot, és azt a lépést
